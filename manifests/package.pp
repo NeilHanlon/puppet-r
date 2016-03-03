@@ -1,13 +1,13 @@
 define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = FALSE) {
 
   if $local == TRUE
-  {  
+  {
     $repostring = NULL
-  }   
+  }
   else
-  {   
-    $repostring = "'${repo}'" 
-  }  
+  {
+    $repostring = "'${repo}'"
+  }
 
   if $r_path == '' {
     $binary = '/usr/bin/R'
@@ -18,8 +18,8 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
   }
 
   $command = $dependencies ? {
-    true    => "${binary} -e \"install.packages('${name}', repos=${repostring}, dependencies = TRUE)\"",
-    default => "${binary} -e \"install.packages('${name}', repos=${repostring}, dependencies = FALSE)\""
+    true    => "${binary} -e \"install.packages('${name}', repos=${repostring}, type=\"source\" dependencies = TRUE)\"",
+    default => "${binary} -e \"install.packages('${name}', repos=${repostring}, type=\"source\" dependencies = FALSE)\""
   }
 
   exec { "install_r_package_${name}":
