@@ -1,8 +1,8 @@
-define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = FALSE) {
+define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false) {
 
-  if $local == TRUE
+  if $local == true
   {
-    $repostring = NULL
+    $repostring = "NULL"
   }
   else
   {
