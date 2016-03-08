@@ -1,4 +1,4 @@
-define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false) {
+define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false, $creates = undef) {
 
   if $local == true
   {
@@ -26,6 +26,7 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
     command => $command,
     timeout => $timeout,
     unless  => "${binary} -q -e \"'${name}' %in% installed.packages()\" | grep 'TRUE'",
+    creates => $creates,
     require => Class['r']
   }
 
