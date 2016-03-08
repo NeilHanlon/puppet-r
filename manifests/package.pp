@@ -18,10 +18,11 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
   }
 
   if $shortname == undef {
-    $shortname = $name;
+    $shortnamestring = $name
   }
-    
-
+  else {
+    $shortnamestring = $shortname
+  }
 
   $command = $dependencies ? {
     true    => "${binary} -e \"install.packages('${name}', repos=${repostring}, dependencies = TRUE)\"",
@@ -31,7 +32,7 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
   exec { "install_r_package_${name}":
     command => $command,
     timeout => $timeout,
-    unless  => "${binary} -q -e \"'${shortname}' %in% installed.packages()\" | grep 'TRUE'",
+    unless  => "${binary} -q -e \"'${shortnamestring}' %in% installed.packages()\" | grep 'TRUE'",
     creates => $creates,
     require => Class['r']
   }
