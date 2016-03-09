@@ -25,12 +25,12 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
   }
 
   $command = $dependencies ? {
-    true    => "${binary} -e \"install.packages('${name}', repos=${repostring}, dependencies = TRUE)\"",
-    default => "${binary} -e \"install.packages('${name}', repos=${repostring}, dependencies = FALSE)\""
+    true    => "${binary} -e \"install.packages(\'${name}\', repos=${repostring}, dependencies = TRUE)\"",
+    default => "${binary} -e \"install.packages(\'${name}\', repos=${repostring}, dependencies = FALSE)\""
   }
 
   exec { "install_r_package_${name}":
-    command => $command,
+    command => "bash --login -c '${$command}'",
     timeout => $timeout,
     unless => "${binary} -q -e \"find.package('${shortnamestring}')\" | grep 'Error'",
     creates => $creates,
