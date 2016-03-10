@@ -1,4 +1,4 @@
-define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false, $creates = undef, $shortname = undef) {
+define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false, $creates = undef, $shortname = undef, $environment = undef) {
 
   if $local == true
   {
@@ -30,6 +30,7 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
   }
 
   exec { "install_r_package_${name}":
+    environment => $environment,
     command => $command,
     timeout => $timeout,
     unless => "${binary} -q -e \"find.package('${shortnamestring}')\" | grep 'Error'",
