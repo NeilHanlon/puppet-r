@@ -33,7 +33,7 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
     environment => $environment,
     command => $command,
     timeout => $timeout,
-    unless => "echo \"'#${shortnamestring}' %in% rownames(installed.packages())\" | Rscript --quiet /dev/stdin | grep -v FALSE"
+    unless => "echo \"'#${shortnamestring}' %in% rownames(installed.packages())\" | Rscript --quiet /dev/stdin | grep -v FALSE",
     creates => $creates,
     require => Class['r']
   }
