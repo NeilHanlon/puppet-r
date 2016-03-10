@@ -1,4 +1,4 @@
-define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false, $creates = undef, $shortname = undef, $environment = undef) {
+define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false, $creates = undef, $shortname = undef, $environment = []) {
 
   if $local == true
   {
