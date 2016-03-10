@@ -33,7 +33,7 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
     environment => $environment,
     command => $command,
     timeout => $timeout,
-    unless => "${binary} -q -e \"find.package('${shortnamestring}')\" | grep 'Error'",
+    unless => "${binary} -q -e \"find.package('${shortnamestring}')\" | grep -vc 'Error'",
     creates => $creates,
     require => Class['r']
   }
