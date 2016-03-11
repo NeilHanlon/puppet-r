@@ -1,12 +1,19 @@
-define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false, $timeout = 300, $local = false, $creates = undef, $shortname = undef, $environment = []) {
+define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false,
+                  $timeout = 300, $local = false, $creates = undef, $shortname = undef,
+                  $environment = [], $configure_arguments = '') {
 
-  if $local == true
-  {
+  if $local == true {
     $repostring = "NULL"
   }
-  else
-  {
+  else {
     $repostring = "'${repo}'"
+  }
+
+  if $configure_arguments == '' {
+    $configurestring = ''
+  }
+  else {
+    $configurestring = "--configure-args=\"${configure_arguments}\", "
   }
 
   if $r_path == '' {
@@ -25,8 +32,8 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
   }
 
   $command = $dependencies ? {
-    true => "echo \"install.packages('${name}', repos=${repostring}, dependencies = TRUE)\" | R CMD BATCH /dev/stdin /dev/stdout | (grep 'non-zero exit status' || exit 0 && exit 1)",
-    default => "echo \"install.packages('${name}', repos=${repostring}, dependencies = FALSE)\" | R CMD BATCH /dev/stdin /dev/stdout | (grep 'non-zero exit status' || exit 0 && exit 1)"
+    true => "echo \"install.packages('${name}', repos=${repostring}, ${configurestring}dependencies = TRUE)\" | R CMD BATCH /dev/stdin /dev/stdout | (grep 'non-zero exit status' || exit 0 && exit 1)",
+    default => "echo \"install.packages('${name}', repos=${repostring}, ${configurestring}dependencies = FALSE)\" | R CMD BATCH /dev/stdin /dev/stdout | (grep 'non-zero exit status' || exit 0 && exit 1)"
   }
 
   exec { "install_r_package_${name}":
