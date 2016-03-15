@@ -13,7 +13,7 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
     $configurestring = ''
   }
   else {
-    $configurestring = "--configure-args=\"${configure_arguments}\", "
+    $configurestring = "configure.args='${configure_arguments}', "
   }
 
   if $r_path == '' {
