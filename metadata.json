@@ -1,0 +1,20 @@
+{
+  "name": "tallsam/puppet_r",
+  "version": "0.0.1",
+  "author": "tallsam",
+  "license": "Apache-2.0",
+  "summary": "A module for installing R, forked from forward3d/puppet-r",
+  "source": "https://github.com/tallsam/puppet-r",
+  "project_page": "https://github.com/tallsam/puppet-r",
+  "issues_url": "https://github.com/tallsam/puppet-r/issues",
+  "tags": ["R", "install", "RedHat"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease": [
+        "6.0",
+        "7.0"
+      ]
+    },
+  ],
+}
