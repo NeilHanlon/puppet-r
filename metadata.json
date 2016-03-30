@@ -1,12 +1,12 @@
 {
-  "name": "tallsam/puppetr",
+  "name": "neilhanlon/r",
   "version": "0.0.1",
-  "author": "tallsam",
+  "author": "neilhanlon",
   "license": "Apache-2.0",
   "summary": "A module for installing R, forked from forward3d/puppet-r",
-  "source": "https://github.com/tallsam/puppet-r",
-  "project_page": "https://github.com/tallsam/puppet-r",
-  "issues_url": "https://github.com/tallsam/puppet-r/issues",
+  "source": "https://github.com/neilhanlon/puppet-r",
+  "project_page": "https://github.com/neilhanlon/puppet-r",
+  "issues_url": "https://github.com/neilhanlon/puppet-r/issues",
   "tags": ["R", "install", "RedHat"],
   "operatingsystem_support": [
     {
