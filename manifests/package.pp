@@ -1,7 +1,6 @@
-define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false,
+define r::package ( $r_path = '', $repo = 'http://cran.rstudio.com', $dependencies = false,
                   $timeout = 300, $local = false, $creates = undef, $shortname = undef,
-                  $environment = [], $configure_arguments = '') {
-
+                  $environment = [], $configure_arguments = '' ) {
   /**
    * Set local to TRUE if you are installing a local tar.gz packages.
    * this makes sure repo gets passed NULL.
@@ -30,8 +29,7 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
   if $r_path == '' {
     $binary = '/usr/bin/R'
   }
-  else
-  {
+  else {
     $binary = $r_path
   }
 
@@ -60,5 +58,4 @@ define r::package($r_path = '', $repo = 'http://cran.rstudio.com', $dependencies
     creates => $creates,
     require => Class['r']
   }
-
 }
