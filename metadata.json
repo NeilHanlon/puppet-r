@@ -1,7 +1,7 @@
 {
-  "name": "neilhanlon-r",
-  "version": "0.0.2",
-  "author": "neilhanlon",
+  "name": "NeilHanlon-r",
+  "version": "0.2.0",
+  "author": "NeilHanlon",
   "summary": "A module for installing R",
   "license": "Apache-2.0",
   "source": "https://github.com/neilhanlon/puppet-r",
