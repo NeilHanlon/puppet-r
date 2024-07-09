@@ -1,21 +1,38 @@
 {
-  "name": "neilhanlon/r",
-  "version": "0.0.1",
+  "name": "neilhanlon-r",
+  "version": "0.0.2",
   "author": "neilhanlon",
+  "summary": "A module for installing R",
   "license": "Apache-2.0",
-  "summary": "A module for installing R, forked from forward3d/puppet-r",
   "source": "https://github.com/neilhanlon/puppet-r",
   "project_page": "https://github.com/neilhanlon/puppet-r",
   "issues_url": "https://github.com/neilhanlon/puppet-r/issues",
-  "tags": ["R", "install", "RedHat"],
+  "dependencies": [
+
+  ],
   "operatingsystem_support": [
     {
-      "operatingsystem":"RedHat",
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
         "6.0",
-        "7.0"
+        "7.0",
+        "8.0",
+        "9.0"
       ]
     }
   ],
-  "dependencies" : []
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 7.24 < 9.0.0"
+    }
+  ],
+  "tags": [
+    "R",
+    "install",
+    "RedHat"
+  ],
+  "pdk-version": "3.2.0",
+  "template-url": "pdk-default#3.2.0",
+  "template-ref": "tags/3.2.0-0-gb257ef1"
 }
